@@ -1,0 +1,69 @@
+Q) 
+Smart Water Monitoring System:
+
+Problem
+
+Water scarcity is an increasingly global issue, with urban households playing a major role in water wastage due to inefficient consumption habits. Traditional water meters provide only total usage data without insights into consumption patterns, making it difficult for homeowners to optimize their water usage effectively. Smart water monitoring systems, powered by machine learning, can help households predict their water consumption and adopt conservation measures.
+
+Task
+
+The goal of this project is to develop a Machine Learning model that predicts daily water consumption for individual households based on historical usage patterns, household characteristics, weather conditions, and conservation behaviors.
+
+Dataset description
+The dataset folder contains the following files: 
+train.csv: 14000 x 12
+test.csv: 6000 x 11
+sample_submission.csv: 5 x 2
+
+Ans:
+Methodology:
+
+(1) Steps Followed:
+
+1. Data Exploration:
+    (i) Analyzed the structure of 'train.csv' (14000 rows, 12 columns) and 'test.csv' (6000 rows, 11 columns).
+    (ii) Identified key predictors such as 'Residents', 'Apartment_Type', 'Temperature', and 'Period_Consumption_Index'.
+    (iii) Checked for missing data in 'Apartment_Type', 'Temperature', 'Income_Level', 'Amenities', and 'Appliance_Usage'.
+
+2. Data Preprocessing:
+    (i) Handling Missing Values:
+         (i) Imputed Numeric columns with missing values, such as 'Temperature' and 'Appliance_Usage', with mean values.
+         (ii) Dropped columns that entirely contain missing values.
+
+  
+    (ii) Categorical Encoding:
+      (i) One-hot encoded 'Apartment_Type' to convert it into numeric features.
+      (ii) Ensured alignment between training and testing datasets after encoding.
+    Feature Engineering:
+      (iii) Considered additional interactions between features such as 'Residents', 'Guests', and 'Appliance_Usage' for potential improvements.
+
+3. Model Training:
+    (i) Selected 'GradientBoostingRegressor' due to its robustness in handling nonlinear relationships and complex datasets.
+    (ii) Splitted data into 80% training and 20% validation sets to evaluate model performance.
+
+4. Hyperparameter Tuning:
+    (i) Optimized key hyperparameters ('n_estimators', 'learning_rate', and 'max_depth') using 'GridSearchCV' for better accuracy.
+    (ii) Evaluated models using the provided score: 'score = max(0, 100  RMSE)'.
+
+5. Model Validation:
+    (i) Achieved a validation score of 68.35 after tuning.
+
+6. Prediction and Submission:
+    (i) Used the trained model to predict 'Water_Consumption' for the test dataset.
+    (ii) Created a submission file ('submission.csv') with two columns: 'Timestamp' (from test data) and 'Water_Consumption' (predicted values).
+
+(2) Tools and Libraries Used:
+    1 Tools used:
+      Programming Language: Python(Jupyter Notebook 7.3.2)
+ 
+    2. Libraries:
+      (i) Used pandas and numpy for data manipulation.
+      (ii) Used scikitlearn for model training, hyperparameter tuning, and validation.
+
+(3) Output Details:
+    Created Submission file ('submission.csv') of size 6000 x 2 with columns named 'Timestamp' and 'Water_Consumption'.
+
+(4) Evaluation:
+   (i) Validated Model accuracy using RMSE based scoring.
+   (ii) Achieved a tuned validation score of 68.35, with predictions prepared for final evaluation.
+
